@@ -9,21 +9,24 @@
 						{{ end }}
 					</header>
 					<div class="box">
+						
 						{{ with .Params.images }}
-							<span class="image featured"><img src="{{ index . 0 | absURL }}" alt=""></span>
+						<span class="image featured"><img src="{{ index . 0 | absURL }}" alt=""></span>
 						{{ end }}
 						{{ .Content }}
 						{{ if .Params.tags }}
-							<p>Tags:
-								{{ range $index, $key:= .Params.tags }}
-									{{ if $index }}, {{ end }}
-									{{ if gt (len $key) 0 }}
-							  		<a href="/tags/{{$key | urlize }}/">#{{ $key }}</a>
-									{{ end }} {{/* if gt len */}}
-								{{ end }} {{/* range */}}
-						  </p>
+						<p>Tags:
+							{{ range $index, $key:= .Params.tags }}
+							{{ if $index }}, {{ end }}
+							{{ if gt (len $key) 0 }}
+							<a href="/tags/{{$key | urlize }}/">#{{ $key }}</a>
+							{{ end }} {{/* if gt len */}}
+							{{ end }} {{/* range */}}
+						</p>
 						{{ end }} {{/* if tags */}}
-						</div>
 					</div>
-				</section>
-{{ end }}
+					{{ template "_internal/disqus.html" . }}
+				</div>
+			</section>
+			{{ end }}
+			

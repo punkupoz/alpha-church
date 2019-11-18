@@ -66,4 +66,32 @@
 				</div>
 			</div>
 		</form>
+{{ else if eq .Site.Params.Contact.service "restapi" }}
+	<form id="contact-form">
+		<div class="row gtr-50 gtr-uniform">
+			<div class="col-6 col-12-mobilep">
+				<input type="text" name="name" id="name" value="" aria-label="Name" placeholder="Name" />
+			</div>
+			<div class="col-6 col-12-mobilep">
+				<input type="email" name="_replyto" id="email" value="" aria-label="Email" placeholder="Email" />
+			</div>
+			<div class="col-12">
+				<textarea name="message" id="message" aria-label="Enter your message" placeholder="Enter your message" rows="6"></textarea>
+			</div>
+			<div class="col-12">
+				<ul class="actions special">
+					<!-- <button type="submit">ASD</button> -->
+					<li><input type="submit" value="Send Message" /></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+	<script>
+		const contactForm = document.querySelector('#contact-form')
+		contactForm.addEventListener("submit", e => {
+			e.preventDefault()
+			console.log(e)
+		})
+		window.daform = contactForm
+	</script>
 {{ end }}
